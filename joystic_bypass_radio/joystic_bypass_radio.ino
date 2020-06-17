@@ -31,7 +31,7 @@ void ResetData()
 
 void setup()
 {
-//    Serial.begin(9600);
+  //    Serial.begin(9600);
 
   ch1.attach(2);
   ch2.attach(3);
@@ -57,14 +57,13 @@ void loop()
   // Control Stick Calibration | Kumanda Kol Kalibrasyonları
   // Setting may be required for the correct values of the control levers. | Kolların doğru değerleri için ayar gerekebilir.
   data.throttle = mapJoystickValues(analogRead(A0), 524, 524, 1015, true);
-  data.roll = mapJoystickValues(analogRead(A1), 12, 524, 1020, true);  // "true" or "false" for servo direction | "true" veya "false" servo yönünü belirler
+  data.roll = mapJoystickValues(analogRead(A1), 12, 524, 1020, true); // "true" or "false" for servo direction | "true" veya "false" servo yönünü belirler
   data.pitch = mapJoystickValues(analogRead(A2), 2, 515, 1022, true); // "true" or "false" for servo direction | "true" veya "false" servo yönünü belirler
-  data.yaw = mapJoystickValues(analogRead(A3), 12, 524, 1020, true);   // "true" or "false" for servo direction | "true" veya "false" servo yönünü belirler
-
+  data.yaw = mapJoystickValues(analogRead(A3), 12, 524, 1020, true);  // "true" or "false" for servo direction | "true" veya "false" servo yönünü belirler
 
   ch_width_1 = map(data.throttle, 0, 255, 1000, 2000); // pin D2 (PWM signal)
-    ch_width_2 = map(data.pitch, 0, 255, 750, 2250);    // pin D3 (PWM signal)
-//  ch_width_2 = map(data.pitch, 0, 255, 1000, 2000);    // pin D3 (PWM signal)
+  ch_width_2 = map(data.pitch, 0, 255, 750, 2250);     // pin D3 (PWM signal)
+                                                       //  ch_width_2 = map(data.pitch, 0, 255, 1000, 2000);    // pin D3 (PWM signal)
   ch_width_3 = map(data.roll, 0, 255, 1000, 2000);     // pin D4 (PWM signal)
   ch_width_4 = map(data.yaw, 0, 255, 1000, 2000);      // pin D5 (PWM signal)
 
@@ -73,5 +72,5 @@ void loop()
   ch2.writeMicroseconds(ch_width_2);
   ch3.writeMicroseconds(ch_width_3);
   ch4.writeMicroseconds(ch_width_4);
-//    Serial.println(analogRead(A2));
+  //    Serial.println(analogRead(A2));
 }
